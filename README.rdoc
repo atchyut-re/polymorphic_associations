@@ -1,28 +1,29 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a sample project explaining the Rails polymorphic associations
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.3.0
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Database creation: SQLlite3
 
 
-Please feel free to use a different markup language if you do not plan to run
+Note: This project is done on reference with: https://richonrails.com/articles/polymorphic-associations-in-rails , Some changes has been made to fix the bugs that rised in the article.
+
+Changes:
+1. "rails g model Person firstname lastname interaction:references{polymorphic}" --> "rails g model Person firstname lastname"
+
+2. "rails g model Interaction description" --> "rails g model Interaction description interactive:references{polymorphic}"
+
+3. In interaction/edit.html :
+<% if @context.class == Business %>
+<h1>Editing Interaction for
+<%= @context.name %>
+</h1>
+<% else %>
+<h1>Editing Interaction for <%= @context.firstname %>
+</h1>
+<% end %>
+<%= render "form" %>
 <tt>rake doc:app</tt>.
