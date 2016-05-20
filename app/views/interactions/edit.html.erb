@@ -1,0 +1,6 @@
+<% if @context.class == Business %>
+<h1>Editing Interaction for <%= @context.name %></h1>
+<% else %>
+<h1>Editing Interaction for <%= @context.firstname %></h1>
+<% end %>
+<%= render "form" %>
